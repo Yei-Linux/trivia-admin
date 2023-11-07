@@ -1,0 +1,48 @@
+{
+  "name": "healthtechlanding",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "dev": "next dev",
+    "start": "next start",
+    "lint": "next lint",
+    "build": "prisma generate && next build",
+    "export": "next export"
+  },
+  "dependencies": {
+    "@fullhuman/postcss-purgecss": "^5.0.0",
+    "@headlessui/react": "^1.7.15",
+    "@mui/material": "^5.14.8",
+    "@prisma/client": "^5.2.0",
+    "axios": "^1.5.0",
+    "bcrypt": "^5.1.1",
+    "classnames": "^2.3.2",
+    "jose": "^4.14.6",
+    "next": "^12.3.4",
+    "postcss-preset-env": "^9.1.0",
+    "ra-data-simple-rest": "^4.13.3",
+    "ra-input-rich-text": "^4.13.3",
+    "react": "18.2.0",
+    "react-admin": "^4.13.3",
+    "react-dom": "18.2.0",
+    "react-query": "^3.39.3",
+    "react-slick": "^0.29.0",
+    "slick-carousel": "^1.8.1",
+    "zustand": "^4.3.9"
+  },
+  "devDependencies": {
+    "@types/bcrypt": "^5.0.0",
+    "@types/jsonwebtoken": "^9.0.2",
+    "@types/node": "20.4.2",
+    "@types/react": "18.2.15",
+    "@types/react-dom": "18.2.7",
+    "@types/react-slick": "^0.23.10",
+    "autoprefixer": "^10.4.14",
+    "eslint": "8.45.0",
+    "eslint-config-next": "13.4.10",
+    "postcss": "^8.4.27",
+    "prisma": "^5.2.0",
+    "tailwindcss": "^3.3.3",
+    "typescript": "5.1.6"
+  }
+}
