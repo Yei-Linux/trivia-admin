@@ -1,7 +1,7 @@
-import type { NextApiRequest, NextApiResponse } from 'next';
-import { createAdmin } from '../../back/services/admins.service';
-import { crypt } from '../../back/helpers/hashing';
-import { Config } from '../../back/config/constants';
+import type { NextApiRequest, NextApiResponse } from "next";
+import { createAdmin } from "../../back/services/admins.service";
+import { crypt } from "../../back/helpers/hashing";
+import { Config } from "../../back/config/constants";
 
 export default async function handler(
   req: NextApiRequest,
@@ -9,7 +9,7 @@ export default async function handler(
 ) {
   if (!Config.IS_API_CREATE_ADMINS_ENABLE) {
     return res.status(500).json({
-      message: 'You are not available to create a user',
+      message: "You are not available to create a user",
     });
   }
 
@@ -17,7 +17,7 @@ export default async function handler(
 
   if (!body) {
     return res.status(500).json({
-      message: 'Empty Request',
+      message: "Empty Request",
     });
   }
 
@@ -28,7 +28,7 @@ export default async function handler(
   const isValidBody = email && password && fullName;
   if (!isValidBody) {
     return res.status(500).json({
-      message: 'Invalid Request',
+      message: "Invalid Request",
       error: true,
     });
   }
@@ -42,12 +42,12 @@ export default async function handler(
 
     return res.status(200).json({
       data: admin,
-      message: 'Admin created succesful',
+      message: "Admin created succesful",
       error: false,
     });
   } catch (error) {
     return res.status(500).json({
-      message: 'Error in process',
+      message: "Error in process",
     });
   }
 }

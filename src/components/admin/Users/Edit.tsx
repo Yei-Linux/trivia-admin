@@ -1,18 +1,21 @@
 import {
+  ArrayField,
   BooleanInput,
+  Datagrid,
   Edit,
   SaveButton,
   SimpleForm,
+  TextField,
   TextInput,
   Toolbar,
-} from 'react-admin';
+} from "react-admin";
 
-import { Grid } from '@mui/material';
+import { Grid } from "@mui/material";
 import {
   EditPageWrapper,
   EditWrapper,
-} from '../../../layouts/admin/EditWrapper';
-import { Breadcrumb } from '../Breadcrumb/Breadcrumb';
+} from "../../../layouts/admin/EditWrapper";
+import { Breadcrumb } from "../Breadcrumb/Breadcrumb";
 
 const ToolbarEdit = () => {
   return (
@@ -23,6 +26,8 @@ const ToolbarEdit = () => {
     </Toolbar>
   );
 };
+
+const CustomEmpty = () => <div>Not answers found</div>;
 
 export const EditUser = () => {
   return (
@@ -48,6 +53,17 @@ export const EditUser = () => {
                 source="isInactive"
                 label="Inactive Bot for this user"
               />
+            </Grid>
+
+            <Grid item sm={12} xs={12}>
+              <ArrayField source="answers">
+                <Datagrid bulkActionButtons={false} empty={<CustomEmpty />}>
+                  <TextField source="questionNumber" />
+                  <TextField source="question" />
+                  <TextField source="answer" />
+                  <TextField source="date" />
+                </Datagrid>
+              </ArrayField>
             </Grid>
           </Grid>
         </SimpleForm>

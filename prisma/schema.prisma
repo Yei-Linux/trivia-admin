@@ -35,3 +35,13 @@ model admins {
   password String
   fullName String
 }
+
+model answers {
+  id                String @id @default(auto()) @map("_id") @db.ObjectId
+  phone             String
+  questionNumber    Int
+  question          String
+  answerId          String
+  answer            String
+  date              DateTime
+}

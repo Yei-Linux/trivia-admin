@@ -1,34 +1,28 @@
-import { useMemo } from 'react';
-import { validClassName } from '../../../helpers';
+import { useMemo } from "react";
 
-import styles from './Text.styles';
-
-type TVariations = '1' | '2' | '3' | '4' | '5' | '6';
-type TUnderlineVariations = '1' | '2' | '4' | '8';
+type TVariations = "1" | "2" | "3" | "4" | "5" | "6";
+type TUnderlineVariations = "1" | "2" | "4" | "8";
 
 export interface IText {
   text: string | React.ReactNode;
-  level: 'sm' | 'base' | 'lg' | 'xl' | '2xl';
-  fontWeight?: 'light' | 'normal' | 'medium' | 'semibold' | 'bold';
+  level: "sm" | "base" | "lg" | "xl" | "2xl";
+  fontWeight?: "light" | "normal" | "medium" | "semibold" | "bold";
   underline?: `offset-${TUnderlineVariations}`;
-  as?: `h${TVariations}` | 'p';
+  as?: `h${TVariations}` | "p";
   className?: string;
 }
 
 export const Text: React.FC<IText> = ({
   text,
   level,
-  as = 'p',
+  as = "p",
   underline,
-  fontWeight = 'medium',
+  fontWeight = "medium",
   className,
 }) => {
   const Component = as;
   const classNameBuilt = useMemo(
-    () =>
-      `text-${level} font-${fontWeight}${validClassName(
-        ` underline underline-${underline}`
-      )} ${className ?? ''}`,
+    () => `text-${level} font-${fontWeight} ${className ?? ""}`,
     [level, fontWeight, underline, className]
   );
 

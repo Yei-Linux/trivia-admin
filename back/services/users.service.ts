@@ -1,4 +1,4 @@
-import prisma from '../config/prisma';
+import prisma from "../config/prisma";
 
 export const countUsers = async () => {
   try {
@@ -50,12 +50,12 @@ export const getUsers = async (
         {
           $match: {
             $or: [
-              { fullName: { $regex: search, $options: 'i' } },
+              { fullName: { $regex: search, $options: "i" } },
               {
-                phone: { $regex: search, $options: 'i' },
+                phone: { $regex: search, $options: "i" },
               },
               {
-                documentNumber: { $regex: search, $options: 'i' },
+                documentNumber: { $regex: search, $options: "i" },
               },
             ],
           },
@@ -70,7 +70,7 @@ export const getUsers = async (
 
     return userssResultSet?.map(({ _id, ...item }: any) => ({
       ...item,
-      id: _id['$oid'],
+      id: _id["$oid"],
     }));
   } catch (error) {
     throw new Error((error as Error).message);
@@ -93,10 +93,17 @@ export const getUserById = async (id: string) => {
       },
     });
 
-    if (!userResultSet) throw new Error('Patient not found');
+    if (!userResultSet) throw new Error("Patient not found");
+    const answersResultSet = await prisma.answers.findMany({
+      where: { phone: userResultSet.phone },
+    });
 
-    return userResultSet;
+    return {
+      ...userResultSet,
+      answers: answersResultSet,
+    };
   } catch (error) {
+    console.log(error);
     throw new Error((error as Error).message);
   }
 };

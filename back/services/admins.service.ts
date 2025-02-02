@@ -1,4 +1,4 @@
-import prisma from '../config/prisma';
+import prisma from "../config/prisma";
 
 export const getAdminsByEmail = async (email: string) => {
   try {
@@ -10,7 +10,7 @@ export const getAdminsByEmail = async (email: string) => {
 
     return admin;
   } catch (error) {
-    throw new Error('Error searching a doctor');
+    throw new Error("Error searching a doctor");
   }
 };
 
@@ -27,6 +27,7 @@ export const createAdmin = async (adminReq: ICreateAdmin) => {
 
     return admin;
   } catch (error) {
-    throw new Error('Error creating a doctor');
+    console.log(error);
+    throw new Error("Error creating a doctor");
   }
 };
